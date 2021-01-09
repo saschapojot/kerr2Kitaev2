@@ -9,15 +9,15 @@ dt = 0.000125  # small time step
 ds = R * dt  # large time step
 timeAxisParts = 10
 N = 96000
-mu0 = -6
+mu0 = 0
 t0 = 1
 d0 = -1
-mu1 = -6
+mu1 = -3
 
 t1 = t0
 d1 = d0
-lmd = 6
-folder="/home/disk2/Documents/cppCode/kerr2Kitaev2/testkNum11/kNum"
+lmd = 0
+folder="/home/disk2/Documents/cppCode/kerr2Kitaev2/testkNum25/kNum"
 inBetaName = folder+ str(N) + "beta" + "mu0" + str(
     mu0) + "t0" + str(t0) + "d0" + str(d0) + "mu1" + str(mu1) + "t1" + str(t1) + "d1" + str(d1) + "lmd" + str(
     lmd) + ".csv"
@@ -25,7 +25,7 @@ inBetaMat = pd.read_csv(inBetaName, header=None)
 rowN = len(inBetaMat)
 
 colN = len(inBetaMat.columns)
-print(colN)
+
 sPoints = [t * ds for t in range(0, rowN)]
 #W = []
 # for i in range(0, rowN):

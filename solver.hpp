@@ -71,6 +71,7 @@ public:
     //9th
     void writeBeta();
     void writeThetaGTab();
+    void writeThetaDTab();
 
 
     //10th

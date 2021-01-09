@@ -404,6 +404,27 @@ void solver::writeThetaGTab() {
     }
     ofPtr.close();
 }
+void solver::writeThetaDTab() {
+    std::string outFileName = this->CON.dir + "D" + "mu0" + boost::lexical_cast<std::string>(this->CON.mu0)
+                              + "t0" + boost::lexical_cast<std::string>(this->CON.t0)
+                              + "d0" + boost::lexical_cast<std::string>(this->CON.d0)
+                              + "mu1" + boost::lexical_cast<std::string>(this->CON.mu1)
+                              + "t1" + boost::lexical_cast<std::string>(this->CON.t1)
+                              + "d1" + boost::lexical_cast<std::string>(this->CON.d1)
+                              + "lmd" + boost::lexical_cast<std::string>(this->CON.lmd) + ".csv";
+    std::ofstream ofPtr;
+    ofPtr.open(outFileName);
+    for (const auto &vec:this->thetaDTab) {
+        size_t colN = vec.size();
+        for (auto i = 0; i < colN - 1; i++) {
+            ofPtr << vec[i] << ",";
+        }
+        ofPtr << vec.back() << "\n";
+    }
+    ofPtr.close();
+
+
+}
 void solver::runCalc() {
 
     this->assignWork();
@@ -411,4 +432,5 @@ void solver::runCalc() {
 
     this->writeBeta();
     this->writeThetaGTab();
+    this->writeThetaDTab();
 }
