@@ -1,23 +1,22 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-
 R = 160  # small time step number
-
+#maybe incr is > 360
 # Q = 1000#large time step number
 dt = 0.000125  # small time step
 ds = R * dt  # large time step
 timeAxisParts = 10
 N = 96000
-mu0 = 0
+mu0 = 1
 t0 = 1
 d0 = -1
-mu1 = -3
+mu1 = 1
 
 t1 = t0
 d1 = d0
-lmd = 0
-folder="/home/disk2/Documents/cppCode/kerr2Kitaev2/testkNum25/kNum"
+lmd = 2.51
+folder="/home/disk2/Documents/cppCode/kerr2Kitaev2/quench13/kNum"
 inBetaName = folder+ str(N) + "beta" + "mu0" + str(
     mu0) + "t0" + str(t0) + "d0" + str(d0) + "mu1" + str(mu1) + "t1" + str(t1) + "d1" + str(d1) + "lmd" + str(
     lmd) + ".csv"

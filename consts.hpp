@@ -4,18 +4,18 @@
 
 #ifndef KERR2KITAEV2_CONSTS_HPP
 #define KERR2KITAEV2_CONSTS_HPP
+
 #include <boost/math/constants/constants.hpp>
 #include <vector>
 #include <complex>
 #include <thread>
 #include <string>
+
 class CONSTS {
 
 
 public:
     CONSTS() {
-
-
 
 
         int tmp1 = (int) std::thread::hardware_concurrency();
@@ -24,27 +24,30 @@ public:
     }
 
 public:
-    void setN(const int&nVal){
-        this->N=nVal;
+    void setN(const int &nVal) {
+        this->N = nVal;
     }
-    void setDk(){
-        this->dk=  2 * M_PI / ((double) N);
+
+    void setDk() {
+        this->dk = 2 * M_PI / ((double) N);
     }
+
     void initKInd() {
         for (int i = 0; i < this->N + 1; i++) {
             kIndAll.push_back(i);
         }
     }
-    void initDir(){
-        this->dir+=boost::lexical_cast<std::string>(N);
+
+    void initDir() {
+        this->dir += boost::lexical_cast<std::string>(N);
 
     }
 
 public:
-    int N ;//lattice number
+    int N;//lattice number
     double dk;
 
-    double lmd = 0;
+    double lmd = 2.51;
 
 
     /*
@@ -55,14 +58,14 @@ public:
     /*
      * Parameters before the quench
      * */
-    double mu0 = 0;
+    double mu0 = 1;
     double t0 = 1.0;
     double d0 = -1.0;
 
     /*
      * Parameters after the quench
      * */
-    double mu1 = -3;
+    double mu1 = 1;
     double t1 = t0;
     double d1 = d0;
     /*
@@ -75,12 +78,14 @@ public:
     double ds = (double) R * dt;//large time step
 
 
-    double tol = 1e-16;
-    double cutOff = 1.4;
+    double tol = 1e-13;
+//    double cutOff = 1.9;
 
     int threadNum;//= std::thread::hardware_concurrency();
 
-    std::string dir = "/home/disk2/Documents/cppCode/kerr2Kitaev2/testkNum25/kNum" ;
+    std::string dir = "/home/disk2/Documents/cppCode/kerr2Kitaev2/quench13/kNum";
+
+//    double piCutOff = M_PI / 45.0;
 
 
 };

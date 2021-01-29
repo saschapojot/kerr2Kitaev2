@@ -270,8 +270,11 @@ void solver::thetaTotTabOneRow(const std::vector<Eigen::Vector2cd> &veck, const 
     for (int q = 0; q < this->CON.Q + 1; q++) {
         Eigen::Vector2cd vecqR = veck[q * this->CON.R];
         std::complex<double> tmp = vec0.adjoint() * vecqR;
+
         std::complex<double> rst = std::complex<double>(0, -1) * std::log(tmp / std::abs(tmp));
+
         this->thetaTotTab[k][q] = rst.real();
+
 
 
     }
@@ -339,15 +342,20 @@ void solver::assignWork() {
 }
 
 double solver::jumpDecision(const double &incr) {
-    double tmp = incr / M_PI;
-    if (tmp >= this->CON.cutOff) {
-        return incr - 2 * M_PI;
-    } else if (tmp <= -this->CON.cutOff) {
-        return incr + 2 * M_PI;
+    double tmp = incr;
+    if (tmp > M_PI) {
+        while (tmp > M_PI) {
+            tmp -= 2 * M_PI;
+        }
+        return tmp;
+    } else if (tmp < -M_PI) {
+        while (tmp < -M_PI) {
+            tmp += 2 * M_PI;
+        }
+        return tmp;
     } else {
-        return incr;
+        return tmp;
     }
-
 
 }
 
@@ -355,7 +363,7 @@ double solver::jumpDecision(const double &incr) {
 void solver::calcIncrOfThetaG() {
     for (int q = 0; q < this->CON.Q + 1; q++) {
         for (int k = 0; k < this->CON.N; k++) {
-            this->beta[q][k] = this->jumpDecision(this->thetaGTab[k+1][q] - this->thetaGTab[k][q]);
+            this->beta[q][k] =this->jumpDecision(this->thetaGTab[k+1][q] - this->thetaGTab[k][q]);//this->thetaGTab[k+1][q] - this->thetaGTab[k][q]; //this->jumpDecision(this->thetaGTab[k+1][q] - this->thetaGTab[k][q]);
         }
     }
 

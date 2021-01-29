@@ -17,7 +17,8 @@ int main() {
 //    auto duration=std::chrono::duration_cast<std::chrono::microseconds>(stop-start);
 //    std::cout<<duration.count()/1e6<<" seconds"<<std::endl;
 
-std::vector<int>NVec={250,500,1000,1500,3000,6000};
+std::vector<int>NVec={6000,12000,24000,48000,96000};
+
 
 for(const int &n:NVec){
     CONSTS conTmp;
