@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 #set(CMAKE_CXX_FLAGS_RELEASE "-O1")
 find_package(Boost 1.45.0)
 find_package (Threads)
-include_directories("/usr/include/eigen-3.4.0")
+include_directories("/usr/local/include/eigen-3.4.0")
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
